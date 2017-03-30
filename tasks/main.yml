@@ -1,13 +1,19 @@
 ---
 # tasks file for ansible-role-vlans_on_trunk
 
-- include: '{{ ansible_distribution | lower }}_{{ ansible_distribution_version }}.yml'
-
-# - debug:
-#     msg: "ansible_virtualization_type = {{ ansible_virtualization_type }}, ansible_virtualization_role = {{ ansible_virtualization_role }}"
-
 - name: Enable kernel modules - VLAN
   modprobe:
     name: '8021q'
     state: present
+  when: ansible_virtualization_type != 'docker'
+
+# Configure the networking environment depends on the distribution
+- include: '{{ ansible_distribution | lower }}_{{ ansible_distribution_version }}.yml'
+
+# - debug:
+#     msg: "ansible_virtualization_type = {{ ansible_virtualization_type }}, ansible_virtualization_role = {{ ansible_virtualization_role }}
+
+- name: Restart VLAN interfaces
+  shell: "ifdown {{ vlan_on_trunk_TrunkInterfaceName }}.{{ item.vlan_id }} && ifup {{ vlan_on_trunk_TrunkInterfaceName }}.{{ item.vlan_id }}"
+  with_items: '{{ vlan_on_trunk_MultiVlanConfig }}'
   when: ansible_virtualization_type != 'docker'
