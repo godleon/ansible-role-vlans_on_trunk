@@ -1,12 +1,9 @@
 ---
 # tasks file for ansible-role-vlans_on_trunk
 
-- name: Install VLAN-related packages
-  apt:
-    name: '{{ item }}'
-    state: 'latest'
-    update_cache: 'yes'
-  with_items:
-    - 'vlan'
-    - 'ifenslave'
-    - 'python-lxml'
+- include: '{{ ansible_distribution | lower }}_{{ ansible_distribution_version }}.yml'
+
+- name: Enable kernel modules - VLAN
+  modprobe:
+    name: '8021q'
+    state: present

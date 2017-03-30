@@ -1,0 +1,14 @@
+- name: Install VLAN-related packages
+  apt:
+    name: '{{ item }}'
+    state: 'latest'
+    update_cache: 'yes'
+  with_items:
+    - 'vlan'
+    - 'ifenslave'
+    - 'python-lxml'
+
+# - name: Config kernel modules - VLAN
+#   lineinfile:
+#     dest: /etc/modules
+#     line: '8021q'
