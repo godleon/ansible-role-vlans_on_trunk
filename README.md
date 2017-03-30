@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Create multiple VLAN interfaces on single trunk interface.
 
 Requirements
 ------------
