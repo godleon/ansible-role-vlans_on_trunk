@@ -4,22 +4,39 @@
 Role Name
 =========
 
-**vlans_on_trunk**
+**godleon.vlans_on_trunk**
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The target machine is going to be provisioned should have a NIC be attached to a trunk port with multiple VLANs on switch.
+
+For the time being, this role doesn't support trunk port with a native VLAN, but this will be improved later.
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The variables that should be passed to this role and a brief description about them are as follows:
+
+```yaml
+# Specify the trunk interface name.
+vlan_on_trunk_TrunkInterfaceName: 'eth1'
+
+# Specify the vlan networking information.
+# Just leave the gateway configuration to be blank if you don't need it.
+vlan_on_trunk_MultiVlanConfig:
+  - { 'vlan_id': 121, 'ip': '10.12.1.254', 'netmask': '255.255.255.0', 'gateway': '' }
+  - { 'vlan_id': 122, 'ip': '10.12.2.254', 'netmask': '255.255.255.0', 'gateway': '' }
+  - { 'vlan_id': 123, 'ip': '10.12.3.254', 'netmask': '255.255.255.0', 'gateway': '' }
+```
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
+
 
 Example Playbook
 ----------------
@@ -28,7 +45,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - godleon.vlans_on_trunk
 
 License
 -------
@@ -38,4 +55,6 @@ MIT
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+**Leon Tseng** 
+
+-  ([godleon@GitHub](https://github.com/godleon))
