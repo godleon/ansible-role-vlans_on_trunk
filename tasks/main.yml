@@ -3,10 +3,11 @@
 
 - include: '{{ ansible_distribution | lower }}_{{ ansible_distribution_version }}.yml'
 
-- debug:
-    msg: "ansible_virtualization_type = {{ ansible_virtualization_type }}, ansible_virtualization_role = {{ ansible_virtualization_role }}"
+# - debug:
+#     msg: "ansible_virtualization_type = {{ ansible_virtualization_type }}, ansible_virtualization_role = {{ ansible_virtualization_role }}"
 
-# - name: Enable kernel modules - VLAN
-#   modprobe:
-#     name: '8021q'
-#     state: present
+- name: Enable kernel modules - VLAN
+  modprobe:
+    name: '8021q'
+    state: present
+  when: ansible_virtualization_type != 'docker'
