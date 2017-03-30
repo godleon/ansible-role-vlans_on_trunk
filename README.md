@@ -55,4 +55,4 @@ Author Information
 
 **Leon Tseng** 
 
--  ([godleon@GitHub](https://github.com/godleon))
+-  [godleon@GitHub](https://github.com/godleon)
