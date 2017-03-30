@@ -1,0 +1,6 @@
+auto {{ vlan_on_trunk_TrunkInterfaceName }}.{{ item.vlan_id }}
+iface {{ vlan_on_trunk_TrunkInterfaceName }}.{{ item.vlan_id }} inet static
+        address {{ item.ip }}
+        netmask {{ item.netmask }}
+        {%+ if item.gateway is not equalto '' %}gateway {{ item.gateway }}{% endif %}
+        vlan-raw-device {{ vlan_on_trunk_TrunkInterfaceName }}
