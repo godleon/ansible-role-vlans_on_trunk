@@ -11,8 +11,6 @@ Requirements
 
 The target machine is going to be provisioned should have a NIC be attached to a trunk port with multiple VLANs on switch.
 
-For the time being, this role doesn't support trunk port with a native VLAN, but this will be improved later.
-
 
 Role Variables
 --------------
