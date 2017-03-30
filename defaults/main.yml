@@ -4,6 +4,6 @@
 vlan_on_trunk_TrunkInterfaceName: 'eth1'
 
 vlan_on_trunk_MultiVlanConfig:
-  - { 'vlan_id': 121, 'ip': '10.12.1.254', 'netmask': '255.255.255.0' }
-  - { 'vlan_id': 122, 'ip': '10.12.2.254', 'netmask': '255.255.255.0' }
-  - { 'vlan_id': 123, 'ip': '10.12.3.254', 'netmask': '255.255.255.0' }
+  - { 'vlan_id': 121, 'ip': '10.12.1.254', 'netmask': '255.255.255.0', 'gateway': '' }
+  - { 'vlan_id': 122, 'ip': '10.12.2.254', 'netmask': '255.255.255.0', 'gateway': '' }
+  - { 'vlan_id': 123, 'ip': '10.12.3.254', 'netmask': '255.255.255.0', 'gateway': '' }
