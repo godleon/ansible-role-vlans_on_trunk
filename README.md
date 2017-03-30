@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Create multiple VLAN interfaces on single trunk interface.
+**vlans_on_trunk**
 
 Requirements
 ------------
@@ -30,7 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
