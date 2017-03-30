@@ -17,8 +17,3 @@
   with_items: '{{ vlan_on_trunk_MultiVlanConfig }}'
   notify: restart networking.service
   when: ansible_virtualization_type != 'docker'
-
-# - name: Config kernel modules - VLAN
-#   lineinfile:
-#     dest: /etc/modules
-#     line: '8021q'
