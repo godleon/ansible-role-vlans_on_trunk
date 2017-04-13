@@ -1,7 +1,0 @@
----
-# handlers file for ansible-role-vlans_on_trunk
-
-- name: restart networking.service
-  service:
-    name: networking.service
-    state: restarted
